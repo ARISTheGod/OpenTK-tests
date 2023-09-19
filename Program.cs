@@ -6,23 +6,25 @@ namespace OpenGL // this is the namespace declaration for the project
         static void Main(string[] args) // this is the main method declaration for the project
         {
             /*
-            this will show how to use trim to remove white space from a string
+            let's also see the replace method which replaces one part of text with another.
             */
 
-            // declare a string variable and assign it a value of "      Hello World!       "
-            string greeting = "      Hello World!       ";
+            // declare a string variable and assign it a value of "Hello World!"
+            string sayHello = "Hello World!";
 
-            // print to the console the value of the string variable with square brackets around it
-            Console.WriteLine($"[{greeting}]"); // this will print [      Hello World!       ]
+            // print the value of the variable sayHello to the console
+            Console.WriteLine(sayHello); // this should print "Hello World!" to the console
 
             /*
-            this will do the following:
-                1. declare a string variable
-                2. assign it the value of the string variable greeting with the trim method called on it
+            this code will do the following:
+                1. find the word "Hello" in the string
+                2. replace the word "Hello" with the word "Greetings"
+                3. change the value of the variable sayHello to "Greetings World!"
             */
-            string trimmedGreeting = greeting.Trim(); // value of trimmedGreeting is "Hello World!"
-            
-            Console.WriteLine($"[{trimmedGreeting}]"); // this will print [Hello World!]
+            sayHello = sayHello.Replace("Hello", "Greetings");
+
+            // print the value of the variable sayHello to the console after the replacement
+            Console.WriteLine(sayHello); // this should print "Greetings World!" to the console
         } // this is the end of the main method declaration for the project
     } // this is the end of the class declaration for the project
 } // this is the end of the namespace declaration for the project
