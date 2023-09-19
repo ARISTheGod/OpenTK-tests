@@ -16,27 +16,15 @@ namespace OpenGL
         }
 
         /*
-        Functions (Methods):
-            In addition to variables, objects also have functions (methods),
-             i.e. code that executes a specific function work.
-            Constructor is one such special method which initializes the object
-             as we have seen but we can have different types of methods.
-            Only the constructor must have the name of the object,
-             the other methods must have different names.
-
-            Each method when we declare it needs, in addition to name,
-             to write the access method (public/private will
-            we'll see what they mean later) as well as the data type it returns.
-            If we don't want it to return anything then we write the word void.
-            Constructor is always public and has no return type because it "returns" the same the object.
-
-            Inside the Car class we write a Start method that will "start" the car.
+        2.
+            We can declare color public: public string color; and printing will succeed.
+            But the best case for variables is to make set/get methods to change/read them respectively.
+            
+            Then we write: Console.WriteLine(mycar.GetColor()); //pay attention to parentheses.
         */
-        public void Start()
+        public string GetColor() // color is of type string
         {
-            // code that states the car is starting
-            // example for testing purposes
-            Console.WriteLine("The car is starting");
+            return color; // the word return indicates that GetColor will return the color
         }
     }
 
@@ -49,18 +37,24 @@ namespace OpenGL
             Car mycar = new Car(4, "white", 300);
 
             /*
-            To call the method we use the "dot", in a sophisticated IDE (Code Generation Program)
-             pressing the dot will automatically output all the visible methods and variables of the object.
-            For example if Console and we press dot it will get us all the methods of the console,
-             like WriteLine which prints something to the console.
+            1.
+            Variable / method visibility:
+                Which variables are visible when we use the dot depends on whether we have declared them public or private.
+                THE word public indicates visibility, word private hides variables and methods.
+                Variables by default are private that is, they are hidden.
+                For example if we write: Console.WriteLine(mycar.color);
+                Printing will fail because with the dot we will not have access to the color variable because it is private.
             */
-            mycar.Start(); // will start the car mycar
+            // you can try it out by uncommenting the line below the printing will fail
+            // Console.WriteLine(mycar.color);
 
             /*
-            In the parentheses we can give values, and as with the Constructor we can have many times the
-             same method (overload) as long as we have different parameters in parentheses.
+            3.
+            testing the GetColor method
             */
+            Console.WriteLine(mycar.GetColor());
 
+            // conclusion: we can access the color variable through the GetColor method
         }
     }
 
