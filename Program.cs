@@ -7,19 +7,27 @@ namespace OpenGL // this is the namespace declaration for the project
         {
             /*
             this code is doing the following:
-                1. declaring a variable called myname and assigning it a value of "Chris"
-                2. printing "Hello " and the value of myname to the console
+                1. declaring a variable called name and assigning it a value of "Chris"
+                2. declaring a variable called name2 and assigning it a value of "Bill"
             */
-            string myname = "Chris"; // this is the code that declares a variable called myname and assigns it a value of "Chris"
+            string name = "Chris"; // this will declare a variable called name and assign it a value of "Chris"
+            string name2 = "Bill"; // just a second variable called name2 and assign it a value of "Bill"
 
             /*
-            this is a other example of string interpolation in C#:
-                use + to concatenate strings in C# but it is not recommended
-                use the $ and {variable} syntax instead
-                remember that the $ and {variable} syntax is called string interpolation
-                and with the + syntax it's called string concatenation
+            this is a example of string concatenation in C#
+                the + operator is used to concatenate strings together
+                it's not recommended to use it because it's not as efficient
+                as the string interpolation method
             */
-            Console.WriteLine($"Hello {myname}");
+            Console.WriteLine("Hello "+ name +" and " + name2); // prints "Hello Chris and Bill" to the console
+
+            /*
+            this is a example of string interpolation in C#
+                the $ operator is used to interpolate strings together
+                it's recommended to use it because it's more efficient
+                than the string concatenation method
+            */
+            Console.WriteLine($"Hello {name} and {name2}"); // prints "Hello Chris and Bill" to the console
             
         } // this is the end of the main method declaration for the project
     } // this is the end of the class declaration for the project
