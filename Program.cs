@@ -5,9 +5,12 @@ namespace OpenGL // this is the namespace declaration for the project
     {
         static void Main(string[] args) // this is the main method declaration for the project
         {
-            
+
             /*
             let's also Numbers (Integers) Simple arithmetic operations
+            
+            instracions:
+                read the comments especially the context comment
             */
 
             int a = 18; // this is the declaration of the variable a with the value of 18
@@ -18,6 +21,14 @@ namespace OpenGL // this is the namespace declaration for the project
             int c = a + b; // this should be 24
 
             Console.WriteLine(c); // this is the output of the variable c to the console this should be 24
+
+            /*
+            context:
+                With the word int we denote whole numbers. The result of C will be 24
+                We can print the limits of the int variable using the MaxValue and MinValue variables, which
+                are variables. With the dot (.) we have access to the methods and also to the variables of the object. The
+                methods such as Trim() above are followed by parentheses while the variable is not.
+            */
 
         } // this is the end of the main method declaration for the project
     } // this is the end of the class declaration for the project
