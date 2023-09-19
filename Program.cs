@@ -8,7 +8,7 @@ namespace OpenGL // this is the namespace declaration for the project
 
             /*
             let's also Numbers (Integers) Simple arithmetic operations
-            
+
             instracions:
                 read the comments especially the context comment
             */
@@ -25,9 +25,6 @@ namespace OpenGL // this is the namespace declaration for the project
             /*
             context:
                 With the word int we denote whole numbers. The result of C will be 24
-                We can print the limits of the int variable using the MaxValue and MinValue variables, which
-                are variables. With the dot (.) we have access to the methods and also to the variables of the object. The
-                methods such as Trim() above are followed by parentheses while the variable is not.
             */
 
         } // this is the end of the main method declaration for the project
