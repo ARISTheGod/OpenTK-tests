@@ -5,26 +5,20 @@ namespace OpenGL // this is the namespace declaration for the project
     {
         static void Main(string[] args) // this is the main method declaration for the project
         {
+            
             /*
-            let's also see the replace method which replaces one part of text with another.
+            let's also Numbers (Integers) Simple arithmetic operations
             */
 
-            // declare a string variable and assign it a value of "Hello World!"
-            string sayHello = "Hello World!";
+            int a = 18; // this is the declaration of the variable a with the value of 18
 
-            // print the value of the variable sayHello to the console
-            Console.WriteLine(sayHello); // this should print "Hello World!" to the console
+            int b = 6; // the as above but with the variable b and the value of 6
 
-            /*
-            this code will do the following:
-                1. find the word "Hello" in the string
-                2. replace the word "Hello" with the word "Greetings"
-                3. change the value of the variable sayHello to "Greetings World!"
-            */
-            sayHello = sayHello.Replace("Hello", "Greetings");
+            // this is the declaration of the variable c with the value of a + b
+            int c = a + b; // this should be 24
 
-            // print the value of the variable sayHello to the console after the replacement
-            Console.WriteLine(sayHello); // this should print "Greetings World!" to the console
+            Console.WriteLine(c); // this is the output of the variable c to the console this should be 24
+
         } // this is the end of the main method declaration for the project
     } // this is the end of the class declaration for the project
 } // this is the end of the namespace declaration for the project
