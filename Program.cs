@@ -2,34 +2,41 @@
 namespace OpenGL
 {
 
-    /*
-    INFO: The Constructor
-        As we see the cars in Car have no values in their variables, the car mycar has no doors.
-        Could we declare int doors = 4 inside the Car class? But that way we would only have cars with 4 doors.
-        To pass the values we want we use a Constructor.
-        We declare the constructor inside the hooks of the class of the object,
-        writing public <class name> () { }
-        The same Car class with the addition of Constructor:
-    */
     public class Car
     {
         int doors; //how many doors does the car have?
         string color; //what color is the car
         double topspeed; //the top speed of the car
 
-        /*
-        The Constructor
-        As we see the cars in Car have no values in their variables, the car mycar has no doors.
-        Could we declare int doors = 4 inside the Car class? But that way we would only have cars with 4 doors.
-        To pass the values we want we use a Constructor.
-        We declare the constructor inside the hooks of the class of the object, writing public <class name> () { }
-        The same Car class with the addition of Constructor:
-        */
         public Car (int d, string c, double t) 
         { 
             doors = d;
             color = c;
             topspeed = t;
+        }
+
+        /*
+        Functions (Methods):
+            In addition to variables, objects also have functions (methods),
+             i.e. code that executes a specific function work.
+            Constructor is one such special method which initializes the object
+             as we have seen but we can have different types of methods.
+            Only the constructor must have the name of the object,
+             the other methods must have different names.
+
+            Each method when we declare it needs, in addition to name,
+             to write the access method (public/private will
+            we'll see what they mean later) as well as the data type it returns.
+            If we don't want it to return anything then we write the word void.
+            Constructor is always public and has no return type because it "returns" the same the object.
+
+            Inside the Car class we write a Start method that will "start" the car.
+        */
+        public void Start()
+        {
+            // code that states the car is starting
+            // example for testing purposes
+            Console.WriteLine("The car is starting");
         }
     }
 
@@ -38,33 +45,23 @@ namespace OpenGL
         static void Main() // this is the main method declaration for the project
         {
 
-            /*
-            Inside the parenthesis we give all the input variables,
-             then between the brackets we set the variables
-             of the object equal to the variables in parentheses.
-            Caution:
-                Variables in parentheses must be of the same type as the object.
-                So we can have many different cars, without rewriting their code and without
-                 create new variables
-            */
-            Car mycar = new Car(4, "white", 300); // car with 4 doors, white color, 300 km top speed
+            // is the car mycar with 4 doors, white color and top speed 300
+            Car mycar = new Car(4, "white", 300);
 
-            Car mycar2 = new Car(2, "red", 500); //car with 2 doors, red color, 500 km top speed
+            /*
+            To call the method we use the "dot", in a sophisticated IDE (Code Generation Program)
+             pressing the dot will automatically output all the visible methods and variables of the object.
+            For example if Console and we press dot it will get us all the methods of the console,
+             like WriteLine which prints something to the console.
+            */
+            mycar.Start(); // will start the car mycar
+
+            /*
+            In the parentheses we can give values, and as with the Constructor we can have many times the
+             same method (overload) as long as we have different parameters in parentheses.
+            */
 
         }
     }
 
 }
-
-/*
-An object can have multiple constructors, as long as they have different parameters in parentheses. In
-in this case we say we have an overload, for example:
-    public Car (int d)
-    {
-    doors = d;
-    }
-
-In this Constructor we are only interested in how many doors the car has. And we declare it as before but
-in parentheses we only give the number from the doors:
-    Car mydoor = new Car(4);
-*/
