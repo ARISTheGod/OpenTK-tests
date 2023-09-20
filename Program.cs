@@ -10,47 +10,47 @@ namespace OpenGL
 
             /*
             Program flow
-                To change the flow of the program we use the structure if(condition1)...else if(condition2)...else
+                Another way to do the same is by using the Switch structure
             */
-
-            int selection; // Create variable (integer)
-            Random rand = new Random(); // Create an object of type Random
 
             /*
-            The Next method returns a random number between the two parameters we specified,
-             in this case it will is a number between 1 and 7.
+            are random number generator to select a number between 1 and 7
             */
-            selection = rand.Next(1, 7); // call the Next method giving 1.7 as parameters
+            int selection; // we declare the variable selection as an integer
+            Random rand = new Random(); // we declare the variable rand as a random number generator object
+            selection = rand.Next(1,7); /*
+            we use the method Next of the object rand to select a number between 1 and 7
+            */
 
-            /*
-            In the random number example above,
-             to print the day of the week that corresponds to number we can use the if structure as follows:
-            */
-            if (selection == 1) /*
-                    in the condition we use double = because single is for entering value.
-                    Here we ask "is selection equal to 1?" If YES then execution proceeds inside the brackets,
-                    otherwise it goes to else if
+            switch (selection) // we start by putting in parentheses the variable we will check
+            {
+            case 1: // with the word case we state what the selection will be equal to
+                Console.WriteLine("Monday"); 
+                break; /*
+                at the end we write break to stop the execution.
+                Without it the code will continue below (in Case 2)
+                and so on until it finds a break or the end of the switch.
+                most of the times we use break to avoid errors and to make the code more readable
                 */
-            {
-                Console.WriteLine("Monday");
-            }
-            else if (selection == 2)
-            {
+            case 2:
                 Console.WriteLine("Tuesday");
+                break;
+            case 3:
+                Console.WriteLine("Wednesday");
+                break;
+            case 4:
+            Console.WriteLine("Thursday");
+                break;
+            case 5:
+                Console.WriteLine("Friday");
+                break;
+            case 6:
+                Console.WriteLine("Saturday");
+                break;
+            case 7:
+                Console.WriteLine("Sunday ");
+                break;
             }
-            else if (selection == 7)
-            {
-                Console.WriteLine("Sunday");
-            }
-
-            /*
-            Once all the else ifs are finished the execution ends.
-            If we want something to be done if the number does not exist in any condition
-             then we finish by writing plain else. For example, if for a random number we wrote:
-            selection = rand.Next(1, 10); It would return numbers from 1 to 10. We would write the code as above and be done
-            writing:
-            } else { Console.WriteLine(“Does not match day!”); } because numbers over 7 do not correspond to a day week
-            */
 
         }
     }
