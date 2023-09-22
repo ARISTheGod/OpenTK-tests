@@ -2,57 +2,46 @@
 {
     class Program
     {
-        /* 2. Program.cs
-        In the Program.cs file is the Main method which is the first method executed when we run it
-        our program. Its only task is to create an object (named game here) of type MyGame and
-        then execute the Run method of that object.
-        */
         static void Main(string[] args)
         {
-            /* 1. Introduction
-            OpenGL
-            OpenGL is an API (Application Programming Interface) a set of functions and methods that
-            they help to display 2D and 3D graphics on the screen.
-            While we call OpenGL a programming language, we cannot actually program
-            directly in OpenGL but we need another programming language (like C#)
-            Actually OpenGL is a specification, it defines what effect the functions should have
-            her. However, the graphics card manufacturers are responsible for implementing these functions,
-            AMD, INTEL, NVIDIA. In other words, OpenGL itself does not offer the content of the functions but only the ones
-            names, parameters and gives information about exactly what these functions are supposed to do.
-
-            OpenTK
-            There are many libraries that allow us to use OpenGL functions, the library that
-            is more compatible with C# and is in constant development (others have been stopped for years) is OpenTK
-            The first step when starting an OpenGL application is to open a window. I will
-            make a class, which can be in the same file or in a different one, but always in the same namespace.
-            */
-
-
-            /* 3. MyGame 
-            The game is a copy of the MyGame class that is loaded into memory with some default values, which
-            we can change. We can have many different objects of the same type even if we change
-            values in one, will not change in the others.
-            MyGame.cs file
-
-            After the name, the colon indicates that the MyGame class will inherit from the GameWindow class.
-            Notice that the Run method we call on the game object has not been implemented by us (the
-            MyGame.cs is practically empty) the Run method is part of GameWindow, and since MyGame is
-            at the same time GameWindow you have all the methods and variables of GameWindow.
-            All windows in OpenGL, after the creation of the object, are started with the Run() method which like
-            parameter accepts the frame rate (frames per second) i.e. how fast the application will refresh (such as
-            we'll see below, whenever OnUpdateFrame will run), if we leave it blank then our program will run
-            as fast as our hardware can handle it.
-            The 3 main methods we need to implement in an OpenGL application are:
-            OnLoad
-            OnRenderFrame
-            OnUpdateFrame
-            There are other methods but these 3 are the main ones that are present in almost every program/application.
-            These methods are in the GameWindow class, to use them we need to change them
-            their contents to do the tasks we want. We achieve this by writing the word override, where
-            will tell the compiler that we don't want GameWindow's OnLoad but our own.
-            */
             MyGame game = new MyGame();
             game.Run();
         }
     }
 }
+
+/*
+Normalized Device Coordinates
+ 
+In 3D graphics, normalized values mean values between 0 and 1. Normalized Device Coordinates are
+coordinates that have values from 0 to 1. Instead of working with resolution in pixels, we work with normalized
+values so that the application runs regardless of screen resolution and hardware.
+Below we will see the coordinates for the 3 vertices that create a triangle in a normalized device
+coordinates.
+
+[IMG URL: ""]
+
+To draw a shape we have to color the vertices. To have access to a variety
+colors we can use the namespace Drawing which are subclasses of System. When
+we write using in the main namespace we don't have access to its sub-Namespaces so we have to
+declare separately, writing using System.Drawing;
+We start the painting by writing GL.Begin which as a parameter we give it what kind of shape we will draw. Here
+we want to draw a simple triangle so we write PrimitveTypes.Triangles because the triangle is Primitive
+(basic shape).
+Then we give the coordinates of the three vertices and a color for each (see the figure)
+We close the drawing by writing GL.End(); Which has no parameters.
+Finally we write the command this.SwapBuffers(); to draw our shape.
+Double Buffering
+OpenGL uses two buffers, the Back Buffer and the Front Buffer. The buffer is space in the memory that it holds
+data, in the Back Buffer the graphics card writes the data of the last frame, as soon as it finishes rendering
+frame then moves it to the Front Buffer from which the screen reads. While the monitor reads the Front Buffer, the VGA
+it fills the Back Buffer, and then they change again. Double buffering was implemented to speed up the process
+rendering, because a space in memory cannot be read and written simultaneously by two different ones
+processes or devices (vga and monitor)
+ 
+Without double buffering, the vga would have to wait for the monitor to read the space before starting to make it
+next frame, creating significant delays.
+ 
+This process of sending data from the Back Buffer to the Front Buffer is done by the SwapBuffers command. Without
+this command we would see nothing
+*/
