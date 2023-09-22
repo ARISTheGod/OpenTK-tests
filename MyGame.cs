@@ -25,7 +25,7 @@ namespace OpenGL1
         // This is called when your window is first created.
         protected override void OnLoad()
         {
-            GL.ClearColor(new Color4(0.3f, 0.4f, 0.5f, 1f)); // set background color to black
+            GL.ClearColor(new Color4(0.3f, 0.4f, 0.5f, 1.0f)); // set background color to black
 
             float[] vertices = new float[] {
                 0.0f, 0.5f, 0.0f, // top vertex0
@@ -61,7 +61,7 @@ namespace OpenGL1
                 void main()
                 {
                     // pass out the position
-                    gl_position = vec4(aPosition, 1.0f);
+                    gl_Position = vec4(aPosition, 1.0f);
                 }
                 ";
 
@@ -74,7 +74,7 @@ namespace OpenGL1
 
                 void main()
                 {
-                    pixelColor = vec4(0.8f, 0.8f, 0.1f, 1f); // set the pixel color to yellow (RGBA)
+                    pixelColor = vec4(0.8f, 0.8f, 0.1f, 1.0f); // set the pixel color to yellow (RGBA)
                 }
                 ";
 
