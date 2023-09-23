@@ -21,7 +21,9 @@ namespace OpenGL1
             string title = "My Game" // the title of the window if not passed in it will be "My Game"
             )
             : base(
-                GameWindowSettings.Default,
+                GameWindowSettings.Default, // this is the default game window settings
+
+                // this is the native window settings (we can override the default game window settings here)
                 new NativeWindowSettings(){
                     Title = title, /*
                         this is the title of the window
@@ -63,15 +65,13 @@ namespace OpenGL1
                 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,       // right vertex2
                 /*
                 how this works:
-                the numbers are the x, y, and z coordinates of the vertices
-                the x coordinate is the horizontal position of the vertex
-                the y coordinate is the vertical position of the vertex
-                the z coordinate is the depth position of the vertex
-
-                now you might be wondering why the z coordinate is 0.0f for all the vertices
-                this is because we are using 2D coordinates for this triangle
-                if we were using 3D coordinates, we would have to set the z coordinate to something other than 0.0f
-                f is a suffix that tells the compiler that the number is a float (32-bit floating point number)
+                this has 7 values per vertex (3 for position, 4 for color) (x, y, z, r, g, b, a)
+                x, y, z are the position of the vertex
+                r, g, b, a are the color of the vertex (red, green, blue, alpha) alpha is the transparency
+                it's like this:
+                vertex0: x, y, z, r, g, b, a
+                vertex1: x, y, z, r, g, b, a
+                vertex2: x, y, z, r, g, b, a
                 */
             };
 
@@ -90,10 +90,10 @@ namespace OpenGL1
             GL.BindBuffer(BufferTarget.ArrayBuffer, this.vertexBufferHandle); // bind the vertex buffer
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 7 * sizeof(float), 0); // set the vertex attribute pointer
             GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 7 * sizeof(float), 3 * sizeof(float)); // set the vertex attribute pointer
-            GL.EnableVertexAttribArray(0); // enable the vertex attribute
-            GL.EnableVertexAttribArray(1); // enable the vertex attribute
+            GL.EnableVertexAttribArray(0); // enable the vertex attribute 0 is the index of the vertex attribute
+            GL.EnableVertexAttribArray(1); // enable the vertex attribute 1 is the index of the vertex attribute
 
-            GL.BindVertexArray(0); // unbind the vertex array
+            GL.BindVertexArray(0); // unbind the vertex array (this is not necessary, but it is good practice)
 
             // vertex shader
             string vertexShaderCode =
@@ -113,7 +113,19 @@ namespace OpenGL1
                     // pass out the position
                     gl_Position = vec4(aPosition, 1.0f);
                 }
-                ";
+                "; /*
+                how this works:
+                this has 2 inputs (aPosition, aColor)
+                 the input aPosition is a vec3 (x, y, z)
+                 the input aColor is a vec4 (r, g, b, a)
+                 we use a as a prefix for the inputs because they are attributes
+                the position is a vec3 (x, y, z)
+                the color is a vec4 (r, g, b, a)
+                the position is passed out as gl_Position
+                the color is passed out as vColor
+
+                INFO: the vertex shader is called for every vertex
+                */
 
             // pixel shader
             string pixelShaderCode =
@@ -128,7 +140,16 @@ namespace OpenGL1
                 {
                     pixelColor = vColor;
                 }
-                ";
+                "; /*
+                how this works:
+                this has 1 input (vColor)
+                 the input vColor is a vec4 (r, g, b, a)
+                 we use v as a prefix for the input because it is a varying
+                the color is a vec4 (r, g, b, a)
+                the color is passed out as pixelColor
+
+                INFO: the pixel shader is called for every pixel on the screen
+                */
 
             int vertexShaderHandle = GL.CreateShader(ShaderType.VertexShader); // create a handle for the vertex shader
             GL.ShaderSource(vertexShaderHandle, vertexShaderCode); // set the vertex shader source code
